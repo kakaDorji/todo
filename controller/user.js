@@ -68,7 +68,7 @@ const mailOptions={
   from:'your-email@example.com',
   to:email,
   subjest:'password reset',
-  text:`Click the link to reset your password: http://localhost:4000/reset-password?token=${token}`
+  text:`Click the link to reset your password: https://todo-9uhu.onrender.com/reset-password?token=${token}`
 };
 transpoter.sendMail(mailOptions,(err,info)=>{
   if(err) return res.status(500).send(err.toString());
