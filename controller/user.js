@@ -61,6 +61,7 @@ if(!user) return res.status(400).send("user not found");
 const token=jwt.sign({email:user.email},process.env.JWT_SECRET);
 
 user.resetToken=token;
+await user.save();
 //send email
 const transpoter = nodemailer.createTransport({ service: 'gmail', auth: { user: 'karsonam458@gmail.com', pass: 'azsxpkefuuoxeyae'   } });
 
