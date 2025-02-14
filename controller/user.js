@@ -80,7 +80,7 @@ async function handleResetPassword(req,res){
       const {token,password}=req.body;
       jwt.verify(token,process.env.JWT_SECRET,async(err,decode)=>{
         if(err) return res.status(400).send('invalid or expired token');
-        const user=await user.findOne({email:decode.email});
+        const user=await User.findOne({email:decode.email});
         if(!user) return res.status(400).send("user not found");
         const hashedPassword=await bcrypt.hash(password,10);
         user.password=hashedPassword;
